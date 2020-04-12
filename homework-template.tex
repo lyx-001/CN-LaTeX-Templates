@@ -1,0 +1,117 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX program = xelatex
+%!TEX TS-program = xelatex
+%%
+%-------------------------------------------------------------%
+% A LaTeX template for homeworks in Chinese
+% Author: Yuxuan Li (李宇轩)
+% School of Information Science and Engineerning
+% Southeast University
+% Nanjing, China
+% April, 2020
+% Version 1.0
+%-------------------------------------------------------------%
+
+\documentclass[a4paper, 12pt, centering, AutoFakeBold]{article}
+
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+% Figures & Tables
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{multirow}
+% Links
+% \usepackage[unicode]{hyperref}
+% \hypersetup{hidelinks}
+\usepackage{url}
+% Listings environment for codes
+\usepackage{listings}
+\usepackage{xcolor} % More colors
+\lstset{
+    basicstyle          =   \sffamily,
+    keywordstyle        =   \bfseries, 
+    commentstyle        =   \rmfamily\itshape,
+    stringstyle         =   \ttfamily,
+    flexiblecolumns, 
+    numbers             =   left,
+    showspaces          =   false, 
+    numberstyle         =   \zihao{5}\ttfamily,
+    showstringspaces    =   false,
+    captionpos          =   t,    % t-top; b-bottom 
+    frame               =   lrtb, % Show frame
+}
+% Python support, can be replaced with other languages
+\lstdefinestyle{Python}{ 
+    language        =   Python,
+    basicstyle      =   \zihao{5}\ttfamily,
+    numberstyle     =   \zihao{5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color[rgb]{0.1,0.5,0.1}\ttfamily,
+    breaklines      =   true, 
+    columns         =   fixed, 
+    basewidth       =   0.5em,
+}
+% Maths
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{calc}
+\usepackage{units}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{breqn}
+% Chinese language support
+\usepackage{ctex}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+\usepackage{titlesec}
+\usepackage{indentfirst} % Autu indent
+\setmainfont{Times New Roman}
+\setCJKmainfont{宋体} % Comment this line on MacOS
+% Change the caption size,
+% so that problems can be put in section captions
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+% Note: fonts may differ in various coumpters
+% Redefine commands as Chinese
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\lstlistingname}{代码清单}
+\renewcommand{\lstlistlistingname}{代码清单}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\algorithmcfname}{算法}
+\SetKwInOut{KwIn}{输入}
+\SetKwInOut{KwOut}{输出}
+
+\title{\textbf{\LaTeX 第1周作业}}
+\author{04000000 某某某}
+% \date{}
+
+\begin{document}
+\maketitle
+
+%--------------------Main work starts here--------------------%
+
+% Problem 1
+\section{TCP中关于RTT时间的计算，为什么“仅为传输一次的报文段”测量RTT？}
+如果一个发生重传的分组实际上并没有丢失，则RTT的计算将发生错误。假设发射方在$t_0$时刻发送一个分组，$t_1$时尚未收到ACK即判定超时，重发该分组；而该分组并未丢失，在$t_2$时其对应的ACK1到达发送方；$t_3$时重发分组的ACK2到达发送方（$t_3 > t_2 > t_1 > t_0$）。然而，系统已经判断超时丢包，会认为ACK1是重发分组的ACK，从而得到${\rm RTT} = t_2 -t_1$，但RTT的真实值应为$t_2 - t_0$或$t_3 - t_1$，从而发生错误。
+
+% Problem 2
+\section{Suppose Host A sends two TCP segments back to back to Host B over a TCP connection. The first segment has sequence number 90; the second has sequence number 110.}
+\begin{itemize}
+    \item[\textbf{(a)}] \textbf{How much data is in the first segment?} \\
+        $110 - 90 = 20\ \rm{bytes}$.
+    \item[\textbf{(b)}] \textbf{Suppose that the first segment is lost but the second segment arrives at B. In the acknowledgment that Host B sends to Host A, what will be the acknowledgment number?} \\
+        The acknowledgment number that Host B puts in its segment is the sequence number it expects to receive from Host A. Since Host B is still waiting for the first segment, the acknowledge number will be 90. 
+\end{itemize}
+
+%---------------------Main work ends here---------------------%
+
+\end{document}
