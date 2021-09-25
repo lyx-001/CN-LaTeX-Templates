@@ -99,9 +99,6 @@
 \SetKwInOut{KwIn}{输入}
 \SetKwInOut{KwOut}{输出}
 
-% Set BibTex
-\bibliographystyle{ieeetr}
-
 %--------------Set title and author name(s) here--------------%
 % Title and author(s)
 \title{\textbf{\LaTeX 实践第1次实验 \\ 简单模板的使用}}
@@ -213,7 +210,7 @@
     \centering
     \subfigure[高斯滤波]{
         \label{Fig.Gfilt}
-        \includegraphics[width=0.3\textwidth,]{./img/cat_Guassian.jpg}}
+        \includegraphics[width=0.3\textwidth]{./img/cat_Guassian.jpg}}
     \subfigure[梯度滤波]{
         \label{Fig.Sfilt}
         \includegraphics[width=0.3\textwidth]{./img/cat_Sobel.jpg}}
@@ -320,6 +317,8 @@ label       =   {imfilt_test.py}
 %------------------The main article ends here-----------------%
 
 %--------------------------References-------------------------%
+% Set BibTex
+\bibliographystyle{IEEETrans}
 \bibliography{./reference.bib}
 \addcontentsline{toc}{section}{参考文献} % Add to contents
 
