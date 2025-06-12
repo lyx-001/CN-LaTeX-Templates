@@ -2,7 +2,7 @@
 ## 配置LaTeX环境
 1. 安装一个LaTeX发行版。我用的是TeX Live 2019，现在已经有最新的2020版了。可以从[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)下载。
 2. （可选）配置一个高颜值的开发环境，例如：
-* [TeXstudio](http://texstudio.sourceforge.net/)（如果下载速度慢可复制链接到迅雷下载）
+* [TeXstudio](http://texstudio.sourceforge.net/)
 * [VS code + LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)（注意要把配置里的`%DOC%`改为`%DOCFILE%`，否则会出现无法识别中文路径的问题）
 
 ## report-template  
